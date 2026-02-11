@@ -1,0 +1,31 @@
+name: "Windows Notification Bridge"
+version: "1.0.0"
+slug: "windows_notification_bridge"
+description: "Bidirectional notification bridge between Home Assistant and Windows"
+url: "https://github.com/hamlinda/ha-windows-notification-bridge"
+arch:
+  - amd64
+  - i386
+  - armhf
+  - armv7
+  - aarch64
+init: false
+services:
+  - mqtt:want
+options:
+  mqtt_broker: "core-mosquitto"
+  mqtt_port: 1883
+  mqtt_username: ""
+  mqtt_password: ""
+  communication_mode: "mqtt"
+  windows_service_ip: ""
+  log_level: "info"
+schema:
+  mqtt_broker: str
+  mqtt_port: port
+  mqtt_username: str?
+  mqtt_password: password?
+  communication_mode: list(mqtt|rest_api)
+  windows_service_ip: str?
+  log_level: list(debug|info|warning|error)
+image: "ghcr.io/{arch}-windows-notification-bridge"
